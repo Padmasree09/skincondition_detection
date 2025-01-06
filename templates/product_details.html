@@ -1,0 +1,311 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Details</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-image: url("./static/pexels-craytive-2720447.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: #f8f9fa;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav {
+        background-color: #333;
+        color: white;
+        padding: 10px;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        margin: 0 10px;
+      }
+
+      nav a:hover {
+        text-decoration: underline;
+      }
+
+      .product-card {
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: white; /* Set background color to white */
+        display: flex; /* Display items side by side */
+        align-items: center; /* Center items vertically */
+      }
+      .product-image {
+        max-width: 100%;
+        border-radius: 10px;
+        margin-right: 20px;
+      }
+      .product-details {
+        flex: 1; /* Allow content to take remaining space */
+      }
+
+      .product-details h3 {
+        margin-top: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="./">Home</a>
+      <a href="./recommendation">Product Recommendation</a>
+      <a href="./consultation">Doctor Consultation</a>
+      <a href="./products"> Products </a>
+    </nav>
+    <div class="container">
+      <h1 class="my-4">All Products</h1>
+      <div id="product-details">
+        Product details will be injected here 
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const products = [
+          {
+            name: "Melaglow Rich Cream",
+            image: "./static/images.jpg",
+            description: "A rich cream to enhance skin glow.",
+            reviews: [
+              "Great for glowing skin!",
+              "A bit expensive but worth it.",
+            ],
+          },
+          {
+            name: "Regaliz Truderma Moisturizing Lotion",
+            image: "./static/Untitled.jpg",
+            description: "A moisturizing lotion for dry skin.",
+            reviews: ["Very hydrating!", "Perfect for winter months."],
+          },
+          {
+            name: "Papulex Oil-Free Cream",
+            image: "./static/Untitled-1.jpg",
+            description: "An oil-free cream for acne-prone skin.",
+            reviews: ["Cleared my acne quickly.", "Leaves a matte finish."],
+          },
+        ];
+
+        const productDetailsContainer =
+          document.getElementById("product-details");
+
+        productDetailsContainer.innerHTML = products
+          .map(
+            (product) => `
+                <div class="product-card">
+                    <img src="${product.image}" alt="${
+              product.name
+            }" class="product-image">
+                    <h2>${product.name}</h2>
+                    <p>${product.description}</p>
+                    <h3>Customer Reviews:</h3>
+                    <ul>
+                        ${product.reviews
+                          .map((review) => `<li>${review}</li>`)
+                          .join("")}
+                    </ul>
+                </div>
+            `
+          )
+          .join("");
+      });
+    </script>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Details</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-image: url("./static/pexels-craytive-2720447.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: #f8f9fa;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav {
+        background-color: #333;
+        color: white;
+        padding: 10px;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        margin: 0 10px;
+      }
+
+      nav a:hover {
+        text-decoration: underline;
+      }
+
+      .product-card {
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: white; /* Set background color to white */
+        display: flex; /* Display items side by side */
+        align-items: center; /* Center items vertically */
+      }
+      .product-image {
+        max-width: 200px; /* Set a fixed width for the image */
+        border-radius: 10px;
+        margin-right: 20px;
+        cursor: pointer; /* Make the image clickable */
+      }
+      .product-details {
+        flex: 1; /* Allow content to take remaining space */
+      }
+      .product-title {
+        cursor: pointer; /* Make the title clickable */
+      }
+      .product-details h3 {
+        margin-top: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="./">Home</a>
+      <a href="./recommendation">Product Recommendation</a>
+      <a href="./consultation">Doctor Consultation</a>
+      <a href="./products">Products</a>
+    </nav>
+    <div class="container">
+      <h1 class="my-4">All Products</h1>
+      <div id="product-details">
+        <!-- Product details will be injected here -->
+      </div>
+      <div id="product-reviews" style="display: none">
+        <!-- Reviews will be displayed here -->
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const products = [
+          {
+            id: 1,
+            name: "Melaglow Rich Cream",
+            image: "./static/images.jpg",
+            description: "A rich cream to enhance skin glow.",
+            reviews: [
+              "Great for glowing skin!",
+              "A bit expensive but worth it.",
+            ],
+          },
+          {
+            id: 2,
+            name: "Regaliz Truderma Moisturizing Lotion",
+            image: "./static/1.jpg",
+            description: "A moisturizing lotion for dry skin.",
+            reviews: ["Very hydrating!", "Perfect for winter months."],
+          },
+          {
+            id: 3,
+            name: "Papulex Oil-Free Cream",
+            image: "./static/2.jpg",
+            description: "An oil-free cream for acne-prone skin.",
+            reviews: ["Cleared my acne quickly.", "Leaves a matte finish."],
+          },
+          {
+            id: 4,
+            name: "Ubtan White Haldi Face Mask With Saffron for Tan Removal - 100 gm",
+            image: "./static/3.jpg",
+            description: "Detoxify Pores | Remove tan | Reduce Blemishes",
+            reviews: [
+              "Great for glowing skin!",
+              "A bit expensive but worth it.",
+            ],
+          },
+          {
+            id: 5,
+            name: "Suganda SQUALANE CLEANSING OIL",
+            image: "./static/4.jpg",
+            description: "Centella Green Tea Facewash + White Lotus Moisturiser",
+            reviews: ["Very hydrating!", "Perfect for winter months."],
+          },
+          {
+            id: 6,
+            name: "Elements Wellness 3 in 1 Face Wash with Tea Tree Oil & Vitamin E",
+            image: "./static/5.jpg",
+            description: "With Vit.E&Tea Tree oil ,( for pimpale ,Acne&Acne spots) ",
+            reviews: ["Cleared my acne quickly.", "Leaves a matte finish."],
+          },
+        ];
+
+        const productDetailsContainer =
+          document.getElementById("product-details");
+        const productReviewsContainer =
+          document.getElementById("product-reviews");
+
+        // Display all products
+        productDetailsContainer.innerHTML = products
+          .map(
+            (product) => `
+                <div class="product-card" data-id="${product.id}">
+                    <img src="${product.image}" alt="${product.name}" class="product-image" onclick="showProduct(${product.id})">
+                    <div class="product-details">
+                        <h2 class="product-title" onclick="showProduct(${product.id})">${product.name}</h2>
+                        <p>${product.description}</p>
+                    </div>
+                </div>
+            `
+          )
+          .join("");
+
+        // Function to show product reviews
+        window.showProduct = function (id) {
+          const product = products.find((p) => p.id === id);
+          productReviewsContainer.innerHTML = `
+              <div class="product-card">
+                  <img src="${product.image}" alt="${
+            product.name
+          }" class="product-image">
+                  <div class="product-details">
+                      <h2>${product.name}</h2>
+                      <p>${product.description}</p>
+                      <h3>Customer Reviews:</h3>
+                      <ul>
+                          ${product.reviews
+                            .map((review) => `<li>${review}</li>`)
+                            .join("")}
+                      </ul>
+                  </div>
+              </div>
+          `;
+          productDetailsContainer.style.display = "none";
+          productReviewsContainer.style.display = "block";
+        };
+      });
+    </script>
+  </body>
+</html>

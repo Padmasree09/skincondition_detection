@@ -1,0 +1,346 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Recommendation</title>
+    <style>
+      body {
+        background-image: url("./static/pexels-craytive-2720447.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: #f8f9fa;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav {
+        background-color: #333;
+        color: white;
+        padding: 10px;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        margin: 0 10px;
+      }
+
+      nav a:hover {
+        text-decoration: underline;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 60px auto;
+        padding: 33px;
+        background-color: white;
+        border-radius: 10px;
+        /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: rgba(
+          255,
+          255,
+          240,
+          0.8
+        ); /* Ivory color with 80% opacity */
+
+        /* .card {
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                background-color: rgba(255, 255, 240, 0.8); /* Ivory color with 80% opacity */
+        /* position: relative; */
+      }
+
+      h1 {
+        text-align: center;
+        color: black;
+        text-transform: uppercase;
+        margin-bottom: 30px;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: black;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      button[type="submit"] {
+        background-color: blue;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: block;
+        width: 100%;
+        font-size: 16px;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+
+      /* Container for recommendations */
+      #recommendations {
+        margin-top: 20px;
+        padding: 10px;
+      }
+
+      /* Styling each recommendation card */
+      .recommendation-card {
+        background-color: rgba(
+          255,
+          255,
+          240,
+          0.8
+        ); /* Ivory color with 80% opacity */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%; /* Full width to display vertically */
+        margin-bottom: 20px; /* Space between cards */
+        box-sizing: content-box;
+        text-align: center;
+      }
+
+      /* Styling the product name inside the card */
+      .recommendation-card h3 {
+        margin-top: 0;
+        color: #333;
+        border: 2px solid #007bff; /* Border color */
+        border-radius: 8px; /* Rounded corners */
+        padding: 15px;
+        margin-bottom: 10px; /* Space between items */
+        background-color: #fff; /* Background color of items */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: shadow for better visibility */
+        transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="./">Home</a>
+      <a href="./recommendation">Product Recommendation</a>
+      <a href="./consultation">Doctor Consultation</a>
+      <a href="./products"> Products </a>
+    </nav>
+    <h1>Product Recommendation</h1>
+    <div class="container">
+      <form id="recommend-form" method="post" action="/recommend">
+        <div class="form-group">
+          <label for="Combination">Combination:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="Combination"
+            name="Combination"
+            min="0"
+            max="1"
+            value="0"
+          />
+        </div>
+        <div class="form-group">
+          <label for="Dry">Dry:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="Dry"
+            name="Dry"
+            min="0"
+            max="1"
+            value="0"
+          />
+        </div>
+        <div class="form-group">
+          <label for="Oily">Oily:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="Oily"
+            name="Oily"
+            min="0"
+            max="1"
+            value="0"
+          />
+        </div>
+        <div class="form-group">
+          <label for="Sensitive">Sensitive:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="Sensitive"
+            name="Sensitive"
+            min="0"
+            max="1"
+            value="0"
+          />
+        </div>
+        <div class="form-group">
+          <label for="Acne">Acne:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="Acne"
+            name="Acne"
+            min="0"
+            max="1"
+            value="0"
+          />
+        </div>
+        <div class="form-group">
+          <label for="Irritation">Irritation:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="Irritation"
+            name="Irritation"
+            min="0"
+            max="1"
+            value="0"
+          />
+        </div>
+        <div class="form-group">
+          <label for="Broken barrier">Broken barrier:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="Broken barrier"
+            name="Broken barrier"
+            min="0"
+            max="1"
+            value="0"
+          />
+        </div>
+        <div class="form-group">
+          <label for="Dark Spots">Dark Spots:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="Dark Spots"
+            name="Dark Spots"
+            min="0"
+            max="1"
+            value="0"
+          />
+        </div>
+        <div class="form-group">
+          <label for="Exfoliation">Exfoliation:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="Exfoliation"
+            name="Exfoliation"
+            min="0"
+            max="1"
+            value="0"
+          />
+        </div>
+        <div class="form-group">
+          <label for="Hydration">Hydration:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="Hydration"
+            name="Hydration"
+            min="0"
+            max="1"
+            value="0"
+          />
+        </div>
+        <div class="form-group">
+          <label for="Pigmentation">Pigmentation:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="Pigmentation"
+            name="Pigmentation"
+            min="0"
+            max="1"
+            value="0"
+          />
+        </div>
+        <div class="form-group">
+          <label for="Pimples">Pimples:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="Pimples"
+            name="Pimples"
+            min="0"
+            max="1"
+            value="0"
+          />
+        </div>
+        <div class="form-group">
+          <label for="Pores">Pores:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="Pores"
+            name="Pores"
+            min="0"
+            max="1"
+            value="0"
+          />
+        </div>
+        <div class="form-group">
+          <label for="Skin soothing">Skin soothing:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="Skin soothing"
+            name="Skin soothing"
+            min="0"
+            max="1"
+            value="0"
+          />
+        </div>
+        <div class="form-group">
+          <label for="Sun protection">Sun protection:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="Sun protection"
+            name="Sun protection"
+            min="0"
+            max="1"
+            value="0"
+          />
+        </div>
+        <div class="form-group">
+          <label for="Whitehead/Blackhead">Whitehead/Blackhead:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="Whitehead/Blackhead"
+            name="Whitehead/Blackhead"
+            min="0"
+            max="1"
+            value="0"
+          />
+        </div>
+        <button type="submit">Get Recommendations</button>
+      </form>
+      <div id="recommendations"></div>
+      <div id="recommendations"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html> -->
