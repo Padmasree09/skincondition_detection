@@ -268,6 +268,10 @@
 </body>
 </html>  -->
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> a60694b4db7413715022030aa1d2ee96991ad629
 <!-- i have to use this again -->
 <!-- <!DOCTYPE html>
 <html lang="en">
@@ -788,6 +792,10 @@
 </body>
 </html> -->
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> a60694b4db7413715022030aa1d2ee96991ad629
 <!-- this is after updating code -->
 <!-- <!DOCTYPE html>
 <html lang="en">
@@ -1103,6 +1111,7 @@
 </body>
 </html> -->
 
+<<<<<<< HEAD
 <!-- this is example -->
 
 <!-- <!DOCTYPE html>
@@ -2038,6 +2047,166 @@
                             <label for="Dry">Dry:</label>
                             <input type="number" class="form-control" id="Dry" name="Dry" min="0" max="1" value="0">
                     </div>
+=======
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Skin Condition Analysis and Recommendation</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('/static/dmt2.jpg'); /* Replace with the actual URL of your image */
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            background-repeat: no-repeat;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .card {
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background-color: ivory;
+            position: relative; /* Ensure card is positioned relatively for absolute positioning */
+        }
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 10px; /* Add margin-bottom to create space between buttons */
+        }
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 24px;
+        }
+        .result span {
+            font-weight: bold;
+            color: #28a745;
+        }
+        .uploaded-image-container {
+            width: 300px;
+            height: 300px;
+            overflow: hidden;
+            margin: 20px auto;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .uploaded-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover; /* Ensures image stays within the container */
+            border-radius: 10px;
+        }
+        .file-input {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        h1 {
+            color: #007bff;
+            text-transform: uppercase;
+        }
+        h1 .symbol {
+            font-size: 1.5em;
+            vertical-align: middle;
+        }
+        #camera-container {
+            display: none; /* Hide camera initially */
+            justify-content: center;
+            align-items: center;
+        }
+        #video-element {
+            width: 100%;
+            max-width: 400px;
+            margin: 20px;
+        }
+        #preview-image {
+            max-width: 100%; /* Ensures the image fits within the container */
+            height: auto;
+            display: none;
+        }
+        #capture-button {
+            display: none; /* Hide capture button initially */
+        }
+        #file-input {
+            display: none; /* Hide file input initially */
+        }
+
+        /* Custom positioning */
+        .top-left {
+            position: absolute;
+            left: 10px;
+            top: 100px; /* Adjust as needed to move the button down */
+            width: 150px; /* Adjust button width */
+        }
+        .top-right {
+            position: absolute;
+            right: 10px;
+            top: 100px; /* Adjust as needed to move the button down */
+            width: 150px; /* Adjust button width */
+        }
+        .center-button {
+            margin: 0 auto;
+            margin-top: 30px;
+            width: 150px; /* Adjust button width */
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card text-center">
+                    <h1 class="mb-4">Skin Condition Analysis <span class="symbol">🩺</span></h1>
+                    <button type="button" id="choose-file-button" class="btn btn-custom top-left">Choose File</button>
+                    <button type="button" id="capture-image-button" class="btn btn-custom top-right">Capture Image</button>
+                    <button type="button" id="analyze-button" class="btn btn-custom center-button" disabled>Analyze</button>
+                    
+                    <input type="file" name="file" accept="image/*" id="file-input">
+                    
+                    <div id="camera-container">
+                        <video id="video-element" autoplay></video>
+                        <div class="uploaded-image-container">
+                            <img src="" id="preview-image" class="uploaded-image">
+                        </div>
+                    </div>
+                    
+                    <button type="button" id="capture-button" class="btn btn-custom center-button">Capture Image</button>
+                    
+                    <div class="result" id="result-section">
+                        Result will be displayed here
+                    </div>
+                </div>
+                
+                <!-- Recommendation Form -->
+                <div class="card text-center mt-4">
+                    <h1 class="mb-4">Product Recommendation</h1>
+                    <form action="/recommend" method="post">
+                        <div class="form-group">
+                            <label for="Combination">Combination:</label>
+                            <input type="number" class="form-control" id="Combination" name="Combination" min="0" max="1" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="Dry">Dry:</label>
+                            <input type="number" class="form-control" id="Dry" name="Dry" min="0" max="1" value="0">
+                        </div>
+>>>>>>> a60694b4db7413715022030aa1d2ee96991ad629
                         <div class="form-group">
                             <label for="Oily">Oily:</label>
                             <input type="number" class="form-control" id="Oily" name="Oily" min="0" max="1" value="0">
@@ -2094,6 +2263,7 @@
                             <label for="Whitehead/Blackhead">Whitehead/Blackhead:</label>
                             <input type="number" class="form-control" id="Whitehead/Blackhead" name="Whitehead/Blackhead" min="0" max="1" value="0">
                         </div>
+<<<<<<< HEAD
                         <button type="button" id="recommend-button" class="btn btn-custom">Get Recommendation</button>
                     </form>
                     <div id="recommendation-result"></div>
@@ -2955,4 +3125,118 @@
       });
     </script>
   </body>
+=======
+                        <button type="submit" class="btn btn-custom">Get Recommendation</button>
+                    </form>
+                </div>
+                <!-- End of Recommendation Form -->
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const fileInput = document.getElementById('file-input');
+            const chooseFileButton = document.getElementById('choose-file-button');
+            const captureImageButton = document.getElementById('capture-image-button');
+            const analyzeButton = document.getElementById('analyze-button');
+            const cameraContainer = document.getElementById('camera-container');
+            const videoElement = document.getElementById('video-element');
+            const previewImage = document.getElementById('preview-image');
+            const captureButton = document.getElementById('capture-button');
+            let stream;
+
+            // Choose File button event listener
+            chooseFileButton.addEventListener('click', () => {
+                fileInput.click();
+            });
+
+            // Capture Image button event listener
+            captureImageButton.addEventListener('click', () => {
+                startCamera();
+            });
+
+            // Analyze button event listener
+            analyzeButton.addEventListener('click', () => {
+                analyzeImage();
+            });
+
+            // File input change event listener
+            fileInput.addEventListener('change', () => {
+                displaySelectedImage(fileInput.files[0]);
+                analyzeButton.disabled = false; // Enable Analyze button
+            });
+
+            // Capture button event listener
+            captureButton.addEventListener('click', () => {
+                captureImage();
+            });
+
+            // Start the camera
+            async function startCamera() {
+                cameraContainer.style.display = 'flex';
+                captureButton.style.display = 'block';
+                chooseFileButton.style.display = 'none';
+                captureImageButton.style.display = 'none';
+                analyzeButton.style.display = 'none';
+
+                try {
+                    stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                    videoElement.srcObject = stream;
+                } catch (err) {
+                    console.error('Error accessing the camera: ', err);
+                }
+            }
+
+            // Capture image from the camera
+            function captureImage() {
+                const canvas = document.createElement('canvas');
+                canvas.width = videoElement.videoWidth;
+                canvas.height = videoElement.videoHeight;
+                const context = canvas.getContext('2d');
+                context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+                const dataURL = canvas.toDataURL('image/png');
+                previewImage.src = dataURL;
+                previewImage.style.display = 'block';
+                videoElement.style.display = 'none';
+                analyzeButton.style.display = 'block';
+                analyzeButton.disabled = false; // Enable Analyze button
+            }
+
+            // Display the selected image
+            function displaySelectedImage(file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    previewImage.src = e.target.result;
+                    previewImage.style.display = 'block';
+                    analyzeButton.style.display = 'block';
+                    analyzeButton.disabled = false; // Enable Analyze button
+                };
+                reader.readAsDataURL(file);
+            }
+
+            // Analyze the image
+            async function analyzeImage() {
+                const imageData = previewImage.src;
+                const response = await fetch('/analyze', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ image: imageData })
+                });
+
+                const result = await response.json();
+                displayResult(result);
+            }
+
+            // Display the analysis result
+            function displayResult(result) {
+                const resultSection = document.getElementById('result-section');
+                resultSection.innerHTML = `The predicted skin condition is: <span>${result.condition}</span>`;
+            }
+        });
+    </script>
+</body>
+>>>>>>> a60694b4db7413715022030aa1d2ee96991ad629
 </html>

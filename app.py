@@ -492,6 +492,7 @@
 #     app.run(debug=True)
 
 
+<<<<<<< HEAD
 # from flask import Flask, render_template, request, jsonify
 # import tensorflow as tf
 # from tensorflow import keras
@@ -830,12 +831,22 @@ from flask import Flask, render_template, request, jsonify
 import tensorflow as tf
 from keras.models import load_model
 from keras.preprocessing import image
+=======
+from flask import Flask, render_template, request, jsonify
+import tensorflow as tf
+from tensorflow import keras
+from keras.models import load_model
+from keras.preprocessing import image
+from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.preprocessing import StandardScaler
+>>>>>>> a60694b4db7413715022030aa1d2ee96991ad629
 import numpy as np
 import pandas as pd
 import os
 import base64
 from PIL import Image
 import io
+<<<<<<< HEAD
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import StandardScaler
 import smtplib
@@ -851,6 +862,12 @@ SMTP_SERVER = 'smtp.gmail.com'
 SMTP_PORT = 587
 
 # Load the trained MobileNet model
+=======
+
+app = Flask(__name__)
+
+# Load the trained model
+>>>>>>> a60694b4db7413715022030aa1d2ee96991ad629
 model_path = 'models/my_model.h5'  # Adjust the path if necessary
 if os.path.exists(model_path):
     model = load_model(model_path)
@@ -861,6 +878,7 @@ else:
 # reading the data from dataset
 dataf = pd.read_csv('preprocessed_dataset_products.csv')
 
+<<<<<<< HEAD
 # Define a function to preprocess the image from file path
 def preprocess_image(img_path):
     img = image.load_img(img_path, target_size=(150, 150))
@@ -880,6 +898,14 @@ def preprocess_image_from_base64(base64_str):
 # Define the unique feature columns
 feature_columns = [
     'Combination', 'Dry', 'Oily', 'Sensitive','Acne'
+=======
+# Define the unique feature columns
+feature_columns = [
+    'Combination', 'Dry', 'Oily', 'Sensitive', 'Acne', 'Irritation',
+    'Broken barrier', 'Dark Spots', 'Exfoliation', 'Hydration',
+    'Pigmentation', 'Pimples', 'Pores', 'Skin soothing', 'Sun protection',
+    'Whitehead/Blackhead'
+>>>>>>> a60694b4db7413715022030aa1d2ee96991ad629
 ]
 # Strip leading and trailing spaces from column names
 dataf.columns = dataf.columns.str.strip()
@@ -895,6 +921,7 @@ normalized_features = scaler.fit_transform(features)
 # Get the product names
 product_names = dataf['Product']
 
+<<<<<<< HEAD
 def get_user_profile(skin_condition,form_data):
     # Extract user input from form data
     user_input = {column: int(form_data.get(column, 0)) for column in feature_columns}
@@ -904,6 +931,12 @@ def get_user_profile(skin_condition,form_data):
         user_input['Acne'] = 1
     else:
         user_input['Acne'] = 0
+=======
+def get_user_profile(form_data):
+    # Extract user input from form data
+    user_input = {column: int(form_data.get(column, 0)) for column in feature_columns}
+
+>>>>>>> a60694b4db7413715022030aa1d2ee96991ad629
     # Create a DataFrame from the user input
     user_profile = pd.DataFrame([user_input], columns=features.columns)
 
@@ -925,6 +958,7 @@ def recommend_products(normalized_user_profile, normalized_features, product_nam
 
     return recommended_products
 
+<<<<<<< HEAD
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -941,6 +975,29 @@ def consultation_page():
 def products_page():
     return render_template('product_details.html')
 
+=======
+
+# Define a function to preprocess the image
+def preprocess_image(img_path):
+    img = image.load_img(img_path, target_size=(150, 150))
+    img_array = image.img_to_array(img)
+    img_array = np.expand_dims(img_array, axis=0)
+    img_array /= 255.0
+    return img_array
+
+# Define a function to preprocess the image from base64 data
+def preprocess_image_from_base64(base64_str):
+    img = Image.open(io.BytesIO(base64.b64decode(base64_str)))
+    img = img.resize((150, 150))
+    img_array = image.img_to_array(img)
+    img_array = np.expand_dims(img_array, axis=0)
+    img_array /= 255.0
+    return img_array
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+>>>>>>> a60694b4db7413715022030aa1d2ee96991ad629
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -960,6 +1017,7 @@ def predict():
     # Make a prediction
     prediction = model.predict(img_array)
     predicted_class = np.argmax(prediction, axis=1)[0]
+<<<<<<< HEAD
 
     # Debugging: print prediction and predicted_class
     print(f'Prediction: {prediction}, Predicted class: {predicted_class}')
@@ -970,11 +1028,18 @@ def predict():
     
     # Debugging: print result
     print(f'Result: {result}')
+=======
+    
+    # Map predicted class index to class name (adjust based on your class indices)
+    class_indices = {0: 'Acne', 1: 'Clear Skin', 2: 'Comedone'}  # Replace with your actual class names
+    result = class_indices.get(predicted_class, 'Unknown Condition')
+>>>>>>> a60694b4db7413715022030aa1d2ee96991ad629
     
     return jsonify({'prediction': result})
 
 @app.route('/recommend', methods=['POST'])
 def recommend():
+<<<<<<< HEAD
     if 'file' in request.files and request.files['file'].filename != '':
         file = request.files['file']
         file_path = os.path.join('uploads', file.filename)
@@ -1050,3 +1115,15 @@ def send_email(name, email, phone, message):
 
 if __name__ == '__main__':
     app.run(debug=True)
+=======
+    form_data = request.form
+    user_profile = get_user_profile(form_data)
+    recommended_products = recommend_products(user_profile, normalized_features, product_names, top_n=3)
+    
+    return jsonify({'recommendations': recommended_products.tolist()})
+
+if __name__ == "_main_":
+    if not os.path.exists('uploads'):
+        os.makedirs('uploads')
+    app.run(host='0.0.0.0', port=8080, debug=True)
+>>>>>>> a60694b4db7413715022030aa1d2ee96991ad629
