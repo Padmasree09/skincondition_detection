@@ -30,12 +30,11 @@ Tech Stack
 
 How to Download and Run the Application
 1. Clone the Repository
-   git clone https://github.com/your-username/skin-condition-recommendation.git
+   git clone https://github.com/Padmasree09/skincondition_detection.git
    cd skin-condition-recommendation
 2. Create a Virtual Environment (Recommended)
    python -m venv venv
-   source venv/bin/activate        # Linux/Mac
-   # OR
+   source venv/bin/activate        # Linux/Mac  (or)
    venv\Scripts\activate           # Windows
 3. Install Required Packages
    pip install -r requirements.txt
