@@ -30,21 +30,36 @@ Tech Stack
 
 How to Download and Run the Application
 1. Clone the Repository
-   git clone https://github.com/Padmasree09/skincondition_detection.git
-   cd skin-condition-recommendation
-2. Create a Virtual Environment (Recommended)
-   python -m venv venv
-   source venv/bin/activate        # Linux/Mac  (or)
-   venv\Scripts\activate           # Windows
-3. Install Required Packages
-   pip install -r requirements.txt
+
+   
+       git clone https://github.com/Padmasree09/skincondition_detection.git
+       cd skincondition_detection
+
+   
+3. Create a Virtual Environment (Recommended)
+
+
+       python -m venv venv
+       source venv/bin/activate        # Linux/Mac  (or)
+       venv\Scripts\activate           # Windows
+
+   
+5. Install Required Packages
+
+
+       pip install -r requirements.txt
    This will install packages like Flask, TensorFlow, NumPy, Pandas, Scikit-learn, etc.
-4. Run the Flask App
-   python app.py
+
+   
+7. Run the Flask App
+
+
+       python app.py
    Flask server will start.
 Visit http://localhost:5000 in your browser.
 
-5. Upload Image and Get Prediction
+
+8. Upload Image and Get Prediction
 
     Upload your skin image.
 
