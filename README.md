@@ -21,11 +21,11 @@ Tech Stack
 
     Backend: Python Flask
 
-    Machine Learning: TensorFlow/Keras (MobileNet)
+    Machine Learning: TensorFlow/Keras (MobileNet)- Deep learning CNN model
 
-    Recommendation System: Scikit-learn
+    Recommendation System: Collaborative based filtering system
 
-    Database: CSV-based product dataset
+    Dataset: CSV-based product dataset, Images(acne,comedone,clear) dataset
 
 
 How to Download and Run the Application
